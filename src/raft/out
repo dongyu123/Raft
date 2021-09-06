@@ -1,0 +1,9 @@
+Test (2A): initial election ...
+--- FAIL: TestInitialElection2A (4.92s)
+    config.go:330: expected one leader, got none
+Test (2A): election after network failure ...
+--- FAIL: TestReElection2A (5.06s)
+    config.go:330: expected one leader, got none
+FAIL
+exit status 1
+FAIL	_/Users/dongyu/Desktop/raft_lab/src/raft	10.852s

@@ -434,15 +434,19 @@ func (cfg *config) one(cmd interface{}, expectedServers int, retry bool) int {
 		// try all the servers, maybe one is the leader.
 		index := -1
 		for si := 0; si < cfg.n; si++ {
+
 			starts = (starts + 1) % cfg.n
 			var rf *Raft
 			cfg.mu.Lock()
 			if cfg.connected[starts] {
 				rf = cfg.rafts[starts]
+
 			}
 			cfg.mu.Unlock()
 			if rf != nil {
+
 				index1, _, ok := rf.Start(cmd)
+
 				if ok {
 					index = index1
 					break
@@ -471,6 +475,7 @@ func (cfg *config) one(cmd interface{}, expectedServers int, retry bool) int {
 		} else {
 			time.Sleep(50 * time.Millisecond)
 		}
+
 	}
 	cfg.t.Fatalf("one(%v) failed to reach agreement", cmd)
 	return -1
